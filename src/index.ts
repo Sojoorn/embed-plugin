@@ -1,3 +1,3 @@
-export function hello(name: string): string {
-    return `Hello ${name}`;
-  }
+import { Embed } from './Embed';
+export default Embed;
+Object.assign(module.exports, Embed);

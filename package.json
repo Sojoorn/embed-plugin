@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run lint && jest",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --quiet --ext .ts",
     "build": "rimraf ./build && tsc"
   },
   "repository": {
