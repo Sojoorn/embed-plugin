@@ -2,11 +2,12 @@
   "name": "embed-plugin",
   "version": "1.0.0",
   "description": "Library for Backend to fetch information related to videos",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": ["dist"],
   "scripts": {
     "test": "npm run lint && jest",
     "lint": "eslint . --quiet --ext .ts",
-    "build": "rimraf ./build && tsc"
+    "build": "rimraf ./dist && tsc"
   },
   "repository": {
     "type": "git",
