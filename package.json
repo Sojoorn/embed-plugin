@@ -1,5 +1,5 @@
 {
-  "name": "embed-plugin",
+  "name": "@hugoperez/embed-plugin",
   "version": "1.0.0",
   "description": "Library for Backend to fetch information related to videos",
   "main": "dist/index.js",
