@@ -3,8 +3,9 @@ import { Dailymotion } from './Dailymotion';
 import { VideoInfo } from './interfaces/video-info.interface';
 import { Vimeo } from './Vimeo';
 import { YouTube } from './Youtube';
+import { Drive } from './Drive';
 export namespace Embed {
-    const platforms: { [key: string]: any } = { youtube: YouTube, vimeo: Vimeo, dailymotion: Dailymotion };
+    const platforms: { [key: string]: any } = { youtube: YouTube, vimeo: Vimeo, dailymotion: Dailymotion, drive: Drive };
     export function getInfo(url: string): VideoInfo {
         const parsedUrl = new URL(url);
         const currentPlaforms = Object.keys(platforms);

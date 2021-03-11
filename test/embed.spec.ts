@@ -25,4 +25,12 @@ describe("Embed", () => {
       embedUrl: expect.any(String)
     });
   });
+  it("Verify Drive Url", () => {
+    expect(Embed.getInfo('https://drive.google.com/file/d/10OoKhqUM2ZukFc-2oVYd-MFy9NWArAFH/view')).toMatchObject({
+      id: expect.any(String), 
+      source: expect.any(String),
+      url: expect.any(String),
+      embedUrl: expect.any(String)
+    });
+  });
 });
