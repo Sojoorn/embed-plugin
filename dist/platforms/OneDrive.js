@@ -76,7 +76,7 @@ var OneDrive;
     }
     OneDrive.getIds = getIds;
     function getEmbedUrl(obj) {
-        return "//onedrive.live.com/embed?cid=" + obj.cid + "&resid=" + obj.resId + "&authkey=" + obj.authKey;
+        return "//onedrive.live.com/download?cid=" + obj.cid + "&resid=" + obj.resId + "&authkey=" + obj.authKey;
     }
     OneDrive.getEmbedUrl = getEmbedUrl;
 })(OneDrive = exports.OneDrive || (exports.OneDrive = {}));

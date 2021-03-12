@@ -89,6 +89,6 @@ export namespace OneDrive {
     }
 
     export function getEmbedUrl(obj: {resId: string, authKey: string, cid: string}): string {
-        return `//onedrive.live.com/embed?cid=${obj.cid}&resid=${obj.resId}&authkey=${obj.authKey}`;
+        return `//onedrive.live.com/download?cid=${obj.cid}&resid=${obj.resId}&authkey=${obj.authKey}`;
     }
 }
