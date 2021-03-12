@@ -25,14 +25,13 @@ export namespace OneDrive {
         if (url.href) {
             let parsedUrl;
             if (url.href.indexOf('1drv.ms/v') > -1) {
-                // return url.searchParams.get('v'); https://1drv.ms/v/s!AkXEMA-H1XcOhgSFiN5DziB0ICS2?e=5qLe8n
-                const redirectedUrl = fetch('https://1drv.ms/v/s!AkXEMA-H1XcOhgUEW8iWLz7HqeX5?e=4GdvzD').url;
+                const redirectedUrl = fetch(url.href).url;
                 parsedUrl = new URL(redirectedUrl);
             } else if (url.href.indexOf('onedrive.live.com')) {
                 parsedUrl = url;
             }
 
-            const cid = `0${parsedUrl?.searchParams.get('resid')?.split('!')[0]}`;
+            const cid = parsedUrl?.searchParams.get('id') ? `0${parsedUrl?.searchParams.get('id')?.split('!')[0]}` : `0${parsedUrl?.searchParams.get('resid')?.split('!')[0]}`;
             const authKey = parsedUrl?.searchParams.get('authkey');
             const resId = parsedUrl?.searchParams.get('id') ? parsedUrl?.searchParams.get('id') : parsedUrl?.searchParams.get('resid');
             
