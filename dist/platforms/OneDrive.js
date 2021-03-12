@@ -11,7 +11,8 @@ var OneDrive;
         var resp = fetch("https://onedrive.live.com/redir.aspx?cid=" + obj.cid + "&resid=" + obj.resId + "&authkey=" + obj.authKey).text();
         var $ = cheerio.load(resp);
         var file = $('meta[property="og:title"]').attr('content');
-        if (fileExtensions.includes(file.split('.')[1])) {
+        var fileSplit = file.split('.');
+        if (fileSplit.length > 1 && fileExtensions.includes(fileSplit[fileSplit.length - 1])) {
             return true;
         }
         return false;

@@ -9,7 +9,8 @@ export namespace OneDrive {
         const resp = fetch(`https://onedrive.live.com/redir.aspx?cid=${obj.cid}&resid=${obj.resId}&authkey=${obj.authKey}`).text();
         const $ = cheerio.load(resp);
         const file = $('meta[property="og:title"]').attr('content');
-        if (fileExtensions.includes(file.split('.')[1])) {
+        const fileSplit = file.split('.');
+        if (fileSplit.length > 1 && fileExtensions.includes(fileSplit[fileSplit.length - 1])) {
             return true;
         }
         
@@ -53,7 +54,7 @@ export namespace OneDrive {
                 return null;
             }
 
-            const obj = parseObj(parsedUrl)
+            const obj = parseObj(parsedUrl);
 
             if (!isVideo(obj)) {
                 return null;
