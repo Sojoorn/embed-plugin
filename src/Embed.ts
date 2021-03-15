@@ -6,6 +6,18 @@ export class Embed {
     constructor(driveAPI?: string | undefined) {
         this.platforms = { youtube: YouTube, vimeo: Vimeo, dailymotion: Dailymotion, drive: new Drive(driveAPI), oneDrive: OneDrive };
     }
+
+    private getEmbedHTML(source?: string, embedUrl?: string): string | null {
+        if (!source || !embedUrl) {
+            return null;
+        }
+        if (source === 'oneDrive') {
+            return `<video controls width="100%" height="300px"><source src="https:${embedUrl}"/></video>`;
+        } else {
+            return `<iframe src="https:${embedUrl}" width="100%" height="300px" frameborder="0" scrolling="no" allowfullscreen></iframe>`;
+        }
+    }
+
     getInfo(url: string): VideoInfo {
         const parsedUrl = new URL(url);
         const currentPlaforms = Object.keys(this.platforms);
@@ -31,7 +43,8 @@ export class Embed {
             id,
             source,
             url: parsedUrl.href,
-            embedUrl
+            embedUrl,
+            html: this.getEmbedHTML(source, embedUrl)
         }
     }
 }

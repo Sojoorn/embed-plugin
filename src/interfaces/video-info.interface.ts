@@ -3,4 +3,5 @@ export interface VideoInfo {
     source?: string;
     url?: string
     embedUrl?: string;
+    html?: string | null;
 }
