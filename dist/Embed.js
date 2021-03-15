@@ -7,6 +7,17 @@ var Embed = /** @class */ (function () {
     function Embed(driveAPI) {
         this.platforms = { youtube: platforms_1.YouTube, vimeo: platforms_1.Vimeo, dailymotion: platforms_1.Dailymotion, drive: new platforms_1.Drive(driveAPI), oneDrive: platforms_1.OneDrive };
     }
+    Embed.prototype.getEmbedHTML = function (source, embedUrl) {
+        if (!source || !embedUrl) {
+            return null;
+        }
+        if (source === 'oneDrive') {
+            return "<video controls width=\"100%\" height=\"300px\"><source src=\"https:" + embedUrl + "\"/></video>";
+        }
+        else {
+            return "<iframe src=\"https:" + embedUrl + "\" width=\"100%\" height=\"300px\" frameborder=\"0\" scrolling=\"no\" allowfullscreen></iframe>";
+        }
+    };
     Embed.prototype.getInfo = function (url) {
         var parsedUrl = new url_1.URL(url);
         var currentPlaforms = Object.keys(this.platforms);
@@ -32,7 +43,8 @@ var Embed = /** @class */ (function () {
             id: id,
             source: source,
             url: parsedUrl.href,
-            embedUrl: embedUrl
+            embedUrl: embedUrl,
+            html: this.getEmbedHTML(source, embedUrl)
         };
     };
     return Embed;
